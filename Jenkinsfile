@@ -42,9 +42,8 @@ pipeline {
 		}*/
 		stage('Helm chart deploy') {
 			steps {
-				sh 'kubectl get nodes'
-				//sh 'helm list'
-				//sh 'helm upgrade hello-v1 hello-app'
+				sh 'helm repo add --username katochm --password P@ssw0rd hello-repo http://192.168.1.173/chartrepo/test1'
+				
 			}
 		} 
 
