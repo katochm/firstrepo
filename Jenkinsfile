@@ -39,7 +39,13 @@ pipeline {
 				sh 'docker push 192.168.1.173/test1/katochm/firstrepo:latest'
 				echo "Image Pushed Successfully"
 			}
-		}*/ 
+		}*/
+		stage('Helm chart deploy') {
+			steps {
+				sh 'helm upgrade hello-v1'
+			}
+		} 
+
 		/*stage('Push artifact to Nexus Repository') {
 			steps {
 				echo "Pushing artifacts........"
@@ -55,12 +61,12 @@ pipeline {
 		        
 		//}
 	      
-		/*stage('Push Docker Image') {
+		stage('Push Docker Image') {
 		    steps {
 		        sh 'docker login --username=katochm --password=Jack@1994'
 		        sh 'docker push katochm/firstrepo:latest'
 		    }
-		}	*/
+		}	
 	}
 
 
