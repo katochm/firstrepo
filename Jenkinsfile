@@ -42,7 +42,8 @@ pipeline {
 		}*/
 		stage('Helm chart deploy') {
 			steps {
-				sh 'helm upgrade hello-v1'
+				sh 'helm list'
+				sh 'helm upgrade hello-v1 hello-app'
 			}
 		} 
 
