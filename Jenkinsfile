@@ -42,6 +42,7 @@ pipeline {
 		}*/
 		stage('Helm chart deploy') {
 			steps {
+				kubernetesDeploy configs: 'config', kubeConfig: [path: '/home/mukul/.kube/config'], kubeconfigId: '', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 				sh 'kubectl cluster-info'
 				sh 'helm list'
 				sh 'helm upgrade hello-v1 hello-app'
