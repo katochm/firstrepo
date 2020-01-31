@@ -42,6 +42,7 @@ pipeline {
 		}*/
 		stage('Helm chart deploy') {
 			steps {
+				sh 'kubectl cluster-info'
 				sh 'helm list'
 				sh 'helm upgrade hello-v1 hello-app'
 			}
