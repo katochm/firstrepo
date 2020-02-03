@@ -42,7 +42,7 @@ pipeline {
 		}*/
 		stage('Helm login') {
 			steps {
-				withCredentials([usernameColonPassword(credentialsId: 'Harbor-creds', variable: 'user')]) {
+				withCredentials([usernameColonPassword(credentialsId: 'Harbor-creds', variable: 'katochm')]) {
 					sh 'helm repo add --username katochm --password P@ssw0rd hello-repo http://192.168.1.173/chartrepo/test1'
 				    sh 'helm push /home/mukul/Documents/hello-app-0.1.0.tgz http://192.168.1.173/chartrepo/test1'
     
