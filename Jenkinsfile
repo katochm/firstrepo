@@ -24,7 +24,7 @@ pipeline {
 		}*/
 		stage('Docker Build') {
 		    steps {
-		        sh 'docker build -t katochm/firstrepo:latest .'
+		        sh 'docker build -t hello-app:latest .'
 		    echo 'docker images is created'
 		    sh 'docker images'
 		    echo "test"
@@ -44,7 +44,7 @@ pipeline {
 			steps {
 				withCredentials([usernameColonPassword(credentialsId: 'Harbor-creds', variable: 'katochm')]) {
 					sh 'helm repo add hello-repo http://192.168.1.173/chartrepo/test1'
-					sh 'helm install hello-v1 hello-app'
+					sh 'helm package hello-v1'
 				    //sh 'helm push /home/mukul/Documents/hello-app-0.1.0.tgz http://192.168.1.173/chartrepo/test1'
     
 				}
